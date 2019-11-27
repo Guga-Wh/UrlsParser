@@ -1,0 +1,32 @@
+{
+  "dependencies": {
+    "audit": "^0.0.6",
+    "cheerio": "^1.0.0-rc.3",
+    "env-cmd": "^8.0.2",
+    "env-src": "^0.1.0",
+    "express": "^4.17.1",
+    "jsdom": "^15.2.1",
+    "mongodb": "^3.3.4",
+    "mongoose": "^5.7.12",
+    "node": "^13.1.0",
+    "nodeman": "^1.1.2",
+    "nodemon": "^2.0.1",
+    "puppeteer": "^2.0.0",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.5",
+    "shelljs": "^0.8.3",
+    "url-parse": "^1.4.7",
+    "validator": "^12.1.0"
+  },
+  "name": "urlparse",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "env-cmd ./config/dev.env nodemon src/index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
