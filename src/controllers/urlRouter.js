@@ -52,10 +52,13 @@ module.exports = {
                 wiki = wikiChildren
             }
             
+        const arrAnswer = []
+        arrAnswer[index] = answerWiki
+        answerWiki = []
         }
 
 
-            res.send(answerWiki)
+            res.send(arrAnswer)
         } catch(e) {
             res.status(400).send()
         }
@@ -71,6 +74,7 @@ module.exports = {
      .then(function(html){
      let c = ''
      const length = $('a', html).length
+     console.log(length)
      for (let i = 0; i < length; i++) {
          c = $('a', html)[i].attribs.href
          if(c) {
