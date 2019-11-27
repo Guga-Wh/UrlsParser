@@ -52,7 +52,7 @@ module.exports = {
                 wiki = wikiChildren
             }
             
-        const arrAnswer = []
+        let arrAnswer = []
         arrAnswer[index] = answerWiki
         answerWiki = []
         }
