@@ -16,20 +16,19 @@ module.exports = {
             const http = 'https://'
             let answerWiki = []
             let wikiChildren = []
-            Array.prototype.diff = function(arr2) { return this.filter(x => arr2.includes(x)); }
-            answerWiki = wiki.diff(wiki)
+            answerWiki = filter(wiki, wiki)
 
             while( x > 1){
                 let wikiChildrens = []
-            for(a in wiki){
-                if(wiki[a]) {
+            for(const a of wiki){
+                if(a) {
 
-                const found = await Link.findOne({ host:wiki[a]})
+                const found = await Link.findOne({ host:a})
                 if(!found){
 
-                 wikiChildrens =  await MyUrlParser(http + wiki[a])
+                 wikiChildrens =   MyUrlParser(http + a)
                 }  else {
-                await Link.find({ host:wiki[a]}, function(err, docs) {
+                 Link.find({ host:a}, function(err, docs) {
                     docs.forEach(x => {
                         wikiChildrens.push(x.link)
                     })
@@ -39,12 +38,11 @@ module.exports = {
                 wikiChildren.push(wikiChildrens)
 
 
-                Array.prototype.diff = function(arr2) { return this.filter(x => !arr2.includes(x)); }
-                const diff = wikiChildren.diff(answerWiki)
+                const diff = filter(wikiChildren, answerWiki)
 
-                for(b in diff)
-                if(diff[b].length !== 0)
-                  answerWiki.push(diff[b])
+                for(const b of diff)
+                if(b.length !== 0)
+                  answerWiki.push(b)
                 }
 
             }
@@ -65,6 +63,7 @@ module.exports = {
         
     }
  }
+ const filter = function(arr1,arr2) { return arr1.filter(x => !arr2.includes(x)); }
 
  const MyUrlParser = async (url) => {
     const wikiUrls = [];
